@@ -30,3 +30,7 @@ Porque la conozco y he visto que se integra bien con GO.
 ## Por qué REST
 
 Porque es la interfaz que necesito, no preciso de más. 
+
+## STATUS
+
+Actualmente estoy haciendo pruebas con los ejemplos y se han ejecutado correctamente en local.
