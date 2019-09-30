@@ -27,4 +27,4 @@ Porque la conozco y he visto que se integra bien con GO.
 
 ## Por qué REST
 
-Porque es la interfaz que necesito, no preciso de más.
+Porque es la interfaz que necesito, no preciso de más. 
