@@ -5,7 +5,7 @@ Instagram tag crawler based on golang
 
 This microservice will provide images that matches an especified tag on Instagram. It would be based on [goinsta](https://github.com/ahmdrz/goinsta). I'll storage the data in a MySQL database. I'll use papertrails for logging and REST technology.
 
-Este microservicio proporcionará imágenes que compartan un tag de Instagram. Estará basado en [goinsta](https://github.com/ahmdrz/goinsta). Los datos se almacenarán en una base de datos MySQL. Se usará papertrails para logs y tecnología REST. Go se usa para la lógica del servicio en sí (la API que en este caso se conecta  a Instgram) y para las comunicaciones clientes servidor con el [paquete http](https://golang.org/pkg/net/http/).
+Este microservicio proporcionará imágenes que compartan un tag de Instagram. Estará basado en [goinsta](https://github.com/ahmdrz/goinsta). Los datos se almacenarán en una base de datos MySQL. Se usará papertrails para logs y tecnología REST. Go se usa para la lógica del servicio en sí (la API que en este caso se conecta  a Instagram) y para las comunicaciones clientes servidor con el [paquete http](https://golang.org/pkg/net/http/).
 
 ## Por qué un proyecto sobre Instagram
 
