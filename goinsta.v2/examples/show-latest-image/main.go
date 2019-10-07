@@ -2,22 +2,17 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"gopkg.in/ahmdrz/goinsta.v2"
 )
 
 func main() {
-	// insta := goinsta.New(
-	// 	os.Getenv("INSTAGRAM_USERNAME"),
-	// 	os.Getenv("INSTAGRAM_PASSWORD"),
-	// )
-
-	//testing!!!!
-
 	insta := goinsta.New(
-		"apuntabienminombre",
-		"77142837Dd",
+		os.Getenv("INSTAGRAM_USERNAME"),
+		os.Getenv("INSTAGRAM_PASSWORD"),
 	)
+
 	if err := insta.Login(); err != nil {
 		log.Println(err)
 		return
