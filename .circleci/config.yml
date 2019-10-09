@@ -5,6 +5,12 @@ jobs:
       - image: circleci/golang:1.11
     steps:
       - checkout
+      - run: go get -u github.com/golang/dep/cmd/dep
+      - run:
+          name: run build
+          command: |
+            dep ensure
+            go build -v
       - run: go test -v ./...
   test:
     docker:
