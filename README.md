@@ -1,45 +1,114 @@
-<p align="center"><img width=100% src="https://raw.githubusercontent.com/ahmdrz/goinsta/v1/resources/goinsta-image.png"></p>
+# go-InstaCrawler
 
 [![Build Status](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler.svg?branch=master)](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-# go-InstaCrawler
-Instagram tag crawler based on golang
+Microservicio que proporciona la URL de la última imagen publicada en Instagram de un hashtag dado.
 
-This microservice will provide images that matches an especified tag on Instagram. It would be based on [goinsta](https://github.com/ahmdrz/goinsta). I'll storage the data in a MySQL database. I'll use papertrails for logging and REST technology.
+Para otra información puedes ver el [antiguo README](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/README_2.md)
 
-Este microservicio proporcionará imágenes que compartan un tag de Instagram. Estará basado en [goinsta](https://github.com/ahmdrz/goinsta). Los datos se almacenarán en una base de datos MySQL. Se usará papertrails para logs y tecnología REST. Go se usa para la lógica del servicio en sí (la API que en este caso se conecta  a Instagram) y para las comunicaciones clientes servidor con el [paquete http](https://golang.org/pkg/net/http/).
-
-## Por qué un proyecto sobre Instagram
-
-Está de moda y puedo hacer algo que me resulte útil.
-
-## Por qué uso [goinsta](https://github.com/ahmdrz/goinsta)
-
-Primero, porque está basado en Go y quería aprender un poco cómo funciona un lenguaje "nuevo" (al menos para mi) que 
-está especialmente diseñado para aplicaciones cloud.
-
-Además es un proyecto bastante activo en GitHub.
-
-## Por qué papertrails
-
-Es necesario mantener un registro de logs y este es "gratis".
-No conozco otro sistema y creo que puede ser sencillo de configurar.
-
-## Por qué MySQL
-
-Porque la conozco y he visto que se integra bien con GO.
-
-## Por qué REST
-
-Porque es la interfaz que necesito, no preciso de más. 
-
-## ¿Es segura la comunicación con el servidor?
-
-Hay que usar un timeout para evitar Hijacking como se dice [aquí](https://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779).
+### Pre-requisitos 📋
 
 
-## STATUS
+Se recomienda instalar en primer lugar un gestor de versiones como [gvm](https://github.com/moovweb/gvm) para poder probar el mismo programa en diferentes versiones del lenguaje.
 
-Actualmente estoy haciendo pruebas con los ejemplos y se han ejecutado correctamente en local.
-Se producen fallos actualmente (quizás por conexiones consecutivas a Instagram).
+```
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+```
+Nos situamos en nuestra carpeta de trabajo y procedemos a instalar la versión que queramos de go.
+
+```
+gvm install go1.13.1
+gvm use go1.13.1
+```
+
+Nota sobre versiones:
+
+* go actualmente tiene la versión estable 1.13.1 y da soporte hasta a dos versiones "major" anteriores (1.11 en este caso)
+* Más información en los comentarios del archivo [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) y en la [información de versiones](https://golang.org/doc/devel/release.html) oficial de go.
+
+### Instalación 🔧
+
+Clonamos repositorio
+
+```
+git clone https://github.com/Jesus-Sheriff/go-InstaCrawler
+```
+
+Debemos definir las variables de entorno siguientes:
+
+```
+export INSTAGRAM_USERNAME=_tu_nombre_de_usuario_
+export INSTAGRAM_PASSWORD=_tu_contraseña_
+```
+El comando "go run" construye el ejecutable antes de lanzarlo, por lo que no hace falta hacer "go build".
+
+```
+cd go-InstaCrawler
+go run goinsta.v2/examples/show-latest-image/main.go
+```
+
+Por defecto al ejecutarlo, muestra la última imagen con el hashtag #golang.
+
+Un ejemplo de salida es:
+
+```
+2019/10/09 12:03:22 ultima foto:  https://scontent-mad1-1.cdninstagram.com/vp/7c8004a33e8ef83675e7c62a62c821d7/5E39388E/t51.2885-15/e35/70513351_167187977761265_1918517610523590583_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=105&se=8&ig_cache_key=MjE1MDc2MzEwMzMzMTk0ODE0Mw%3D%3D.2
+```
+
+## Ejecutando las pruebas (tests) ⚙️
+
+Nota: el archivo de test de la clase principal con comentarios linea a linea está [aquí](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/goinsta.v2/tests/latest_image_test.go).
+
+Para ejecutar todos los tests, como en este caso solo hay un archivo de test:
+
+```
+go test goinsta.v2/tests/latest_image_test.go
+```
+
+Y debería dar como salida algo similar a:
+
+```
+ok  	command-line-arguments	5.393s
+```
+
+Si además de los errores queremos que nos muestre un log, se puede usar la opción "-v" y la salida sería como esta:
+
+```
+go test -v gopkg.in/ahmdrz/goinsta.v2/tests/latest_image_test.go 
+=== RUN   TestImportAccount
+--- PASS: TestImportAccount (5.23s)
+    latest_image_test.go:38: URL is: https://scontent-mad1-1.cdninstagram.com/vp/42471a4ab5bc8a7db6936fb3d097da7d/5E22E36B/t51.2885-15/e35/p1080x1080/70194953_158216195247611_8124119613573040881_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=111&ig_cache_key=MjE1MDgxNTAyMTYxODEzNjkxMQ%3D%3D.2
+    latest_image_test.go:40: logged into Instagram as user 'apuntabienminombre'
+PASS
+ok  	command-line-arguments	5.244s
+```
+
+## Integración Continua 📦
+
+Actualmente está configurado y en funcionamiento [Travis-CI](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler) para los tests.
+
+La adaptación de [Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) está en proceso.
+
+## Construido con 🛠️
+
+
+* [gvm](https://github.com/moovweb/gvm) - Manejador de versiones de GO
+* [dep](https://github.com/golang/dep) - Manejador de dependencias de GO
+
+
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia GPLv3 - mira el archivo [LICENSE](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/LICENSE) para detalles
+
+## Gracias a... 🎁
+
+* A los creadores de [goinsta](https://github.com/ahmdrz/goinsta)
+
+* AL traductor de esta plantilla README [Villanuevand](https://github.com/Villanuevand)
+
+
+
+---
+⌨️ Plantilla adaptada de [Villanuevand](https://github.com/Villanuevand) 😊
