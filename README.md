@@ -88,6 +88,8 @@ ok  	command-line-arguments	5.244s
 
 Actualmente está configurado y en funcionamiento [Travis-CI](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler) para los tests.
 
+En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) ) están las distintas versiones usadas para testeo de la aplicación y su justificación.
+
 La adaptación de [Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) está en proceso.
 
 ## Construido con 🛠️
