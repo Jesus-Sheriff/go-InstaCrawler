@@ -3,11 +3,10 @@ jobs:
  test:
   docker:
    - image: circleci/golang:1.11
-steps:
+ steps:
  - checkout
  - run: go test -v ./..
 workflows:
   version: 2.1
-  do_test:
-    jobs:
+  jobs:
       - test
