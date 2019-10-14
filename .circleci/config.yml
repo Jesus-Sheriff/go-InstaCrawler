@@ -1,26 +1,18 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/golang:1.11
-    steps:
-      - checkout
-      - run: go get -u github.com/golang/dep/cmd/dep
-      - run:
-          name: run build
-          command: |
-            dep ensure
-            go build -v
-      - run: go test -v ./...
-  test:
-    docker:
-      - image: circleci/golang:1.11
-    steps:
-      - checkout
-      - run: go test -v ./...
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test
+machine:
+  environment:
+    IMPORT_PATH: "github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+
+dependencies:
+  pre:
+    - go get github.com/tools/godep
+
+  override:
+    - mkdir -p "$GOPATH/src/$IMPORT_PATH"
+    - rsync -azC --delete ./ "$GOPATH/src/$IMPORT_PATH/"
+
+test:
+  pre:
+    - go vet ./...
+
+  override:
+    - godep go test ./...
