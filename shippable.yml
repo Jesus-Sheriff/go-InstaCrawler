@@ -11,8 +11,10 @@ go:
 - "1.13.x"
 - master
 
+env:
+- secure: XyUZf5yMxvoRjs8gdBMzXV3GM3anMIylfpTVsLhtlGuOVGznYmtu1ZIcXFAkP4uikoLF6eyvG83SSakbKkwA5kNAaYXL3DogjP8H4kwJ0HF5TiAke/xZJWAn9MKYYXw0PYgRIgGqBX2/eHf1pfrr1IR6cSTdByVZmOjXmFYpgsdG93yOGHBJoe3CXJ8RjRaqyVI1Bp8g0qWUuIKvTRCsIMFdYvqgqKylJozU2kP/xdmYPC2sFmC6ViATXMEVsjcwT9VA5VjWfB5GPXWsBznY9zMxYXMsb4REMsK2wyeTOgyl2UILGPtFEoBJrsUX78z4BOl9eQYm81TaxsgNV4iuzA==
+
 #Ejecución del test
 #./... ejecuta todos los tests del directorio de test. Es útil por si se meten más archivos de tests en el futuro
 script:
-- secure: XyUZf5yMxvoRjs8gdBMzXV3GM3anMIylfpTVsLhtlGuOVGznYmtu1ZIcXFAkP4uikoLF6eyvG83SSakbKkwA5kNAaYXL3DogjP8H4kwJ0HF5TiAke/xZJWAn9MKYYXw0PYgRIgGqBX2/eHf1pfrr1IR6cSTdByVZmOjXmFYpgsdG93yOGHBJoe3CXJ8RjRaqyVI1Bp8g0qWUuIKvTRCsIMFdYvqgqKylJozU2kP/xdmYPC2sFmC6ViATXMEVsjcwT9VA5VjWfB5GPXWsBznY9zMxYXMsb4REMsK2wyeTOgyl2UILGPtFEoBJrsUX78z4BOl9eQYm81TaxsgNV4iuzA==
 - go test -v ./...
