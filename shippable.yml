@@ -1,0 +1,17 @@
+language: go
+sudo: false
+
+#go actualmente tiene la versión estable 1.13.1 y da soporte hasta a dos versiones "major" anteriores (1.11 en este caso)
+#master es la última versión de go en desarrollo
+#Con estas líneas probamos las versiones más usadas
+go:
+- "1.11"
+- "1.11.x"
+- "1.12.x" 
+- "1.13.x"
+- master
+
+#Ejecución del test
+#./... ejecuta todos los tests del directorio de test. Es útil por si se meten más archivos de tests en el futuro
+script:
+- go test -v ./...
