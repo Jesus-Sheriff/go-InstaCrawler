@@ -12,6 +12,7 @@ jobs:
           name: run build
           command: |
             dep ensure
+            dep init
             go build -v
       - run: go test -v ./...
   test:
