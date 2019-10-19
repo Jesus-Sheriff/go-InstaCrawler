@@ -36,20 +36,27 @@ Clonamos repositorio
 
 ```
 git clone https://github.com/Jesus-Sheriff/go-InstaCrawler
+cd go-InstaCrawler
 ```
 
-Debemos definir las variables de entorno siguientes:
+Debemos definir unas variables de entorno. Estas variables pueden hacerse permanentes si se añaden al archivo `$HOME/.bash_profile` y se ejecuta `source $HOME/.bash_profile`.
+(NOTA: $PATH y $GOPATH deben definirse donde se desee trabajar, estos son los valores por defecto recomendados en la documentación).
+
 
 ```
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
 export INSTAGRAM_USERNAME=_tu_nombre_de_usuario_
 export INSTAGRAM_PASSWORD=_tu_contraseña_
 ```
-El comando "go run" construye el ejecutable antes de lanzarlo, por lo que no hace falta hacer "go build".
+
+Para ejecutar:
 
 ```
-cd go-InstaCrawler
-go run goinsta.v2/examples/show-latest-image/main.go
+make run
 ```
+
+Esta orden obtiene las dependencias (las actualiza si es necesario), ejecuta los test y si todo es correcto, ejecuta el programa.
 
 Por defecto al ejecutarlo, muestra la última imagen con el hashtag #golang.
 
@@ -63,10 +70,10 @@ Un ejemplo de salida es:
 
 Nota: el archivo de test de la clase principal con comentarios linea a linea está [aquí](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/goinsta.v2/tests/latest_image_test.go).
 
-Para ejecutar todos los tests, como en este caso solo hay un archivo de test:
+Para ejecutar todos los tests:
 
 ```
-go test goinsta.v2/tests/latest_image_test.go
+make test
 ```
 
 Y debería dar como salida algo similar a:
