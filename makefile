@@ -17,7 +17,7 @@ EXPORT=export
 all: test run
 build: 
 	$(GOBUILD) -o $(BINARY_NAME) -v
-test: 
+test: deps
 	$(GOTEST) -v ./...
 clean: 
 	$(GOCLEAN)
