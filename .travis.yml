@@ -14,4 +14,4 @@ go:
 #Ejecución del test
 #./... ejecuta todos los tests del directorio de test. Es útil por si se meten más archivos de tests en el futuro
 script:
-- go test -v ./...
+- make test
