@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"gopkg.in/ahmdrz/goinsta.v2"
+	"github.com/ahmdrz/goinsta"
 )
 
 func main() {

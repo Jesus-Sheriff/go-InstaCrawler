@@ -5,7 +5,7 @@ import (
 	"testing"
 	"net/url"
 
-	"gopkg.in/ahmdrz/goinsta.v2"
+	"github.com/ahmdrz/goinsta"
 )
 
 func TestImportAccount(t *testing.T) {
