@@ -5,22 +5,13 @@ jobs:
       - image: circleci/golang:1.11
     steps:
       - checkout
-      - run: go get -u github.com/golang/dep/cmd/dep
-      - run: go get -u github.com/ahmdrz/goinsta
-      - run: go get -u gopkg.in/ahmdrz/goinsta.v2
-      - run:
-          name: run build
-          command: |
-            dep ensure
-            dep init
-            go build -v
-      - run: go test -v ./...
+      - run: make run
   test:
     docker:
       - image: circleci/golang:1.11
     steps:
       - checkout
-      - run: go test -v ./...
+      - run: make test
 workflows:
   version: 2
   build_and_test:
