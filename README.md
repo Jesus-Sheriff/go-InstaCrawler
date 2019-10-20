@@ -13,7 +13,16 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
 
 ### Índice
 
-<!-- TOC -->autoauto- [go-InstaCrawler](#go-instacrawler)auto        - [Índice](#índice)auto        - [Pre-requisitos 📋](#pre-requisitos-📋)auto        - [Instalación 🔧](#instalación-🔧)auto    - [Ejecutando las pruebas (tests) ⚙️](#ejecutando-las-pruebas-tests-⚙️)auto    - [Integración Continua 📦](#integración-continua-📦)auto    - [Construido con 🛠️](#construido-con-🛠️)auto    - [Licencia 📄](#licencia-📄)auto    - [Gracias a... 🎁](#gracias-a-🎁)autoauto<!-- /TOC -->
+<!-- TOC -->
+- [go-InstaCrawler](#go-instacrawler)
+        - [Pre-requisitos 📋](#pre-requisitos-📋)        
+        - [Instalación 🔧](#instalación-🔧)    
+        - [Ejecutando las pruebas (tests) ⚙️](#ejecutando-las-pruebas-tests-⚙️)    
+        - [Integración Continua 📦](#integración-continua-📦)    
+        - [Construido con 🛠️](#construido-con-🛠️)    
+        - [Licencia 📄](#licencia-📄)    
+        - [Gracias a... 🎁](#gracias-a-🎁)
+<!-- /TOC -->
 
 ### Pre-requisitos 📋
 
