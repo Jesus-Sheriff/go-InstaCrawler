@@ -11,6 +11,10 @@ Microservicio que proporciona la URL de la última imagen publicada en Instagram
 
 Para otra información puedes ver el [antiguo README](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/README_2.md)
 
+### Índice
+
+<!-- TOC -->autoauto- [go-InstaCrawler](#go-instacrawler)auto        - [Índice](#índice)auto        - [Pre-requisitos 📋](#pre-requisitos-📋)auto        - [Instalación 🔧](#instalación-🔧)auto    - [Ejecutando las pruebas (tests) ⚙️](#ejecutando-las-pruebas-tests-⚙️)auto    - [Integración Continua 📦](#integración-continua-📦)auto    - [Construido con 🛠️](#construido-con-🛠️)auto    - [Licencia 📄](#licencia-📄)auto    - [Gracias a... 🎁](#gracias-a-🎁)autoauto<!-- /TOC -->
+
 ### Pre-requisitos 📋
 
 
@@ -51,11 +55,28 @@ export INSTAGRAM_USERNAME=_tu_nombre_de_usuario_
 export INSTAGRAM_PASSWORD=_tu_contraseña_
 ```
 
-Para ejecutar:
+Para ejecutar el servicio podemos hacer:
+
+* Ejecución completa de tests+servicio
+
+```
+make
+```
+
+Por defecto al hacer `make` ejecuta la orden del makefile `all: test run` que, después de descargar y actualizar dependencias, ejecuta el test y si es correcto compila y ejecuta el programa.
+
+* Ejecución solo del servicio
 
 ```
 make run
 ```
+
+La orden `make run` en el makefile es esta:
+
+    run: deps
+        $(GORUN) goinsta.v2/examples/show-latest-image/main.go
+
+Primero comprueba dependencias (`deps`) y después compila el código y ejecuta.
 
 Esta orden obtiene las dependencias (las actualiza si es necesario), ejecuta los test y si todo es correcto, ejecuta el programa.
 
@@ -79,14 +100,8 @@ make test
 
 Y debería dar como salida algo similar a:
 
-```
-ok  	command-line-arguments	5.393s
-```
-
-Si además de los errores queremos que nos muestre un log, se puede usar la opción "-v" y la salida sería como esta:
 
 ```
-go test -v gopkg.in/ahmdrz/goinsta.v2/tests/latest_image_test.go 
 === RUN   TestImportAccount
 --- PASS: TestImportAccount (5.23s)
     latest_image_test.go:38: URL is: https://scontent-mad1-1.cdninstagram.com/vp/42471a4ab5bc8a7db6936fb3d097da7d/5E22E36B/t51.2885-15/e35/p1080x1080/70194953_158216195247611_8124119613573040881_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=111&ig_cache_key=MjE1MDgxNTAyMTYxODEzNjkxMQ%3D%3D.2
@@ -94,6 +109,14 @@ go test -v gopkg.in/ahmdrz/goinsta.v2/tests/latest_image_test.go
 PASS
 ok  	command-line-arguments	5.244s
 ```
+
+La orden `make test` en el makefile es:
+
+    test: deps
+        $(GOTEST) -v ./...
+
+Nuevamente requiere de las dependencias y después ejecuta los test en modo verbose `-v`.
+El modo verbose muestra tanto los posibles fallos como las lías de log que haya.
 
 ## Integración Continua 📦
 
@@ -115,7 +138,9 @@ En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jes
 * [gvm](https://github.com/moovweb/gvm) - Manejador de versiones de GO
 * [make](https://es.wikipedia.org/wiki/Make) - Para la gestión de dependencias, variables de entorno, ejecución de test y compilación y ejecución.
 
+buildtool: Makefile
 
+El archivo de makefile actualmente funciona correctamente para los tests, ejecución y resolución de dependencias. Se está añadiendo una forma de poder definir las variables de entorno desde aquí.
 
 ## Licencia 📄
 
