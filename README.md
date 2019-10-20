@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler.svg?branch=master)](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler)
 [![Run Status](https://api.shippable.com/projects/5da439a382a9a900064c3542/badge?branch=master)]()
+[![CircleCI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler.svg?style=svg)](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
@@ -96,17 +97,23 @@ ok  	command-line-arguments	5.244s
 
 ## Integración Continua 📦
 
-Actualmente está configurado y en funcionamiento [Travis-CI](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler) para los tests.
+Los detalles de Integración Continua y su explicación para evaluación [aquí](CI.md)
+
+Actualmente están configurados y en funcionamiento:
+
+[Travis-CI](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler) para los tests.
 
 En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) ) están las distintas versiones usadas para testeo de la aplicación y su justificación.
 
-La adaptación de [Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) está en proceso.
+[Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) para test y ejecución en la versión 1.13.1 de Go.
+
+[Shippable](https://app.shippable.com/github/Jesus-Sheriff/go-InstaCrawler/dashboard) para tests.
 
 ## Construido con 🛠️
 
 
 * [gvm](https://github.com/moovweb/gvm) - Manejador de versiones de GO
-* [dep](https://github.com/golang/dep) - Manejador de dependencias de GO
+* [make](https://es.wikipedia.org/wiki/Make) - Para la gestión de dependencias, variables de entorno, ejecución de test y compilación y ejecución.
 
 
 
@@ -117,6 +124,8 @@ Este proyecto está bajo la Licencia GPLv3 - mira el archivo [LICENSE](https://g
 ## Gracias a... 🎁
 
 * A los creadores de [goinsta](https://github.com/ahmdrz/goinsta)
+
+* A  Radomir Sohlich por su [plantilla de ejemplo de makefile para Go](https://sohlich.github.io/post/go_makefile/)
 
 * AL traductor de esta plantilla README [Villanuevand](https://github.com/Villanuevand)
 
