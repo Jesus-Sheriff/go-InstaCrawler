@@ -2,13 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.11
+      - image: circleci/golang:1.13.1
     steps:
       - checkout
       - run: make run
   test:
     docker:
-      - image: circleci/golang:1.11
+      - image: circleci/golang:1.13.1
     steps:
       - checkout
       - run: make test
