@@ -19,7 +19,7 @@ clean:
 	rm -f $(BINARY_UNIX)
 run: deps
 	#$(GORUN) goinsta.v2/examples/show-latest-image/main.go
-	pmgo start goinsta.v2/examples/show-latest-image/ app
+	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
 stop:
 	pmgo stop app
 	pmgo delete app
