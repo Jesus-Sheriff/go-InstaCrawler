@@ -9,6 +9,8 @@ Travis CI
     [![Dificultad](https://img.shields.io/badge/Dificultad-2%2F10-brightgreen)]()
 =====================
 
+(tests + run)
+
 TravisCI funciona con el manejador de versiones en Go `gimme`. Más información en el [GitHub de gimme](https://github.com/travis-ci/gimme). Se le han indicado las versiones de esta forma:
 
     go:
@@ -25,10 +27,19 @@ La versión 1.13.x testea en estos momentos la versión 1.13.1 que es la última
 
 En mi caso, hay que indicar las variables de entorno de usuario y contraseña de Instagram. Esto se ha hecho en la interfaz web. También he comprobado que en los logs no aparece el usuario ni la contraseña en texto legible.
 
+Travis actualmente realiza tanto los tests como la ejecución del servicio.
+
+Para la ejecución se usa el gestor `pmgo` que se ha comentado en la primera página de documentación.
+
+Se ha tenido que cambiar la ruta que se le pasa `pmgo` por una específica de travis, de lo contrario no localiza el ejecutable.
+
+
 Shippable
     [![Run Status](https://api.shippable.com/projects/5da439a382a9a900064c3542/badge?branch=master)]()
     [![Dificultad](https://img.shields.io/badge/Dificultad-4%2F10-green)]()
 ===============================================================
+
+(tests)
 
 Shippable funciona con el manejador de versiones de Go `gvm`. Este manejador no acepta versiones relativas del lenguaje, hay que indicarle exactamente en qué versión queremos que testee. No se cómo indicar que testee en la versión de desarrollo.
 
@@ -48,16 +59,35 @@ CircleCI
     [![Dificultad](https://img.shields.io/badge/Dificultad-9%2F10-red)]()
 =============================================
 
+(Los tests funcionan, la ejecución falla porque la ruta que se pasa a `pmgo` no es correcta)
+
 CircleCI es un poco distinto de configurar. Su archivo de configuración es muy distinto al de Travis y Shippable. Se basa en YAML y un simple espacio puede hacer que no funcione su lectura (y fallen todos los test).
 
-Ejemplo de test:
+Fichero de configuración:
 
-    docker:
-        - image: circleci/golang:1.13.1
-        steps:
-        - checkout
-        - run: make test
+    version: 2
+    jobs:
+        build:
+            docker:
+                - image: circleci/golang:1.13.1
+            steps:
+                - checkout
+                - run: make runcircle
+        test:
+            docker:
+                - image: circleci/golang:1.13.1
+            steps:
+                - checkout
+                - run: make test
+    workflows:
+        version: 2
+        build_and_test:
+            jobs:
+            - build
+            - test
 
-Lo he configurado para que ejecute los test en la versión 1.13.1 y además lo construya y ejecute haciendo uso de las órdenes de makefile.
+Como se ve, lo he configurado para que ejecute dos workflows. Se ejecutan los tests en la versión 1.13.1 y además lo construye y ejecuta haciendo uso de las órdenes de makefile.
+
+Como ya he dicho, actualmente la ejecución falla porque la ruta que se le pasa al gestor de procesos no es correcta.
 
 Las variables de entorno se definen en la web al igual que en Travis.

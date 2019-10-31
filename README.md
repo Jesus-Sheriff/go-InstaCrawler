@@ -44,7 +44,7 @@ Nota sobre versiones:
 * go actualmente tiene la versión estable 1.13.1 y da soporte hasta a dos versiones "major" anteriores (1.11 en este caso)
 * Más información en los comentarios del archivo [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) y en la [información de versiones](https://golang.org/doc/devel/release.html) oficial de go.
 
-### Instalación 🔧
+### Instalación y uso 🔧
 
 Clonamos repositorio
 
@@ -63,6 +63,18 @@ export PATH=$PATH:/usr/local/go/bin
 export INSTAGRAM_USERNAME=_tu_nombre_de_usuario_
 export INSTAGRAM_PASSWORD=_tu_contraseña_
 ```
+Para usar las órdenes del makefile se requiere también del programa `pmgo`.
+
+Este programa es un gestor de procesos escrito en go básico pero funcional.
+
+```
+go get github.com/struCoder/pmgo
+mv $GOPATH/bin/pmgo /usr/local/bin
+```
+
+Por último, en el archivo `.env` se define el puerto del servicio, por defecto es el 8080.
+
+#### Uso del microservicio
 
 Para ejecutar el servicio podemos hacer:
 
@@ -83,11 +95,12 @@ make run
 La orden `make run` en el makefile es esta:
 
     run: deps
-        $(GORUN) goinsta.v2/examples/show-latest-image/main.go
+	    pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
+
 
 Primero comprueba dependencias (`deps`) y después compila el código y ejecuta.
 
-Esta orden obtiene las dependencias (las actualiza si es necesario), ejecuta los test y si todo es correcto, ejecuta el programa.
+Esta orden obtiene las dependencias (las actualiza si es necesario) y ejecuta el programa.
 
 Por defecto al ejecutarlo, muestra la última imagen con el hashtag #golang.
 
@@ -97,9 +110,26 @@ Un ejemplo de salida es:
 2019/10/09 12:03:22 ultima foto:  https://scontent-mad1-1.cdninstagram.com/vp/7c8004a33e8ef83675e7c62a62c821d7/5E39388E/t51.2885-15/e35/70513351_167187977761265_1918517610523590583_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=105&se=8&ig_cache_key=MjE1MDc2MzEwMzMzMTk0ODE0Mw%3D%3D.2
 ```
 
+Una vez arrancado podemos hacer las siguientes llamadas:
+
+* `/status`
+    
+    Devuelve el status del servicio.
+* `/latest`
+
+    Devuelve el estado de la llamada y el URI de la última imagen almacenada.
+* `/latest/{id}`
+
+    Devuelve el estado de la llamada y el URI de la imagen número `id`. Tanto si el número especificado es correcto o no, se obtiene una respuesta.
+
+
 ## Ejecutando las pruebas (tests) ⚙️
 
 Nota: el archivo de test de la clase principal con comentarios linea a linea está [aquí](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/goinsta.v2/tests/latest_image_test.go).
+
+Actualmente están todos los tests en un solo fichero.
+
+En él están los tests funcionales que chequean las llamadas al microservicio (`/status`, `/latest` y `/latest/{id}`) y los tests unitarios.
 
 Para ejecutar todos los tests:
 
@@ -111,12 +141,27 @@ Y debería dar como salida algo similar a:
 
 
 ```
+go test -v ./...
+?   	go-InstaCrawler/goinsta.v2/examples/show-latest-image	[no test files]
+=== RUN   TestGetStatus
+--- PASS: TestGetStatus (0.00s)
+    latest_image_test.go:49: getStatus correcto: '{Status: "OK", URI: ""}'
+=== RUN   TestGetImage
+--- PASS: TestGetImage (0.00s)
+    latest_image_test.go:66: getImage correcto: '{Status: "OK", URI: "https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/74533385_166361284555809_7727768850258146020_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=109&bc=1571337657&oh=121bcbbc0ebee792f067f0d9cfcd5549&oe=5E2D09EB&ig_cache_key=MjE1ODI0Mjc3ODE0MDUwNjc2Mg%3D%3D.2"}'
+=== RUN   TestGetImageNumber
+--- PASS: TestGetImageNumber (0.00s)
+    latest_image_test.go:83: getImageNumber correcto: '{Status: "OK", URI: "https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/74533385_166361284555809_7727768850258146020_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=109&bc=1571337657&oh=121bcbbc0ebee792f067f0d9cfcd5549&oe=5E2D09EB&ig_cache_key=MjE1ODI0Mjc3ODE0MDUwNjc2Mg%3D%3D.2"}'
+=== RUN   TestNotFound
+--- PASS: TestNotFound (0.00s)
+    latest_image_test.go:101: notFound correcto: '{Status: "NOT - OK: 404", URI: ""}'
 === RUN   TestImportAccount
---- PASS: TestImportAccount (5.23s)
-    latest_image_test.go:38: URL is: https://scontent-mad1-1.cdninstagram.com/vp/42471a4ab5bc8a7db6936fb3d097da7d/5E22E36B/t51.2885-15/e35/p1080x1080/70194953_158216195247611_8124119613573040881_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=111&ig_cache_key=MjE1MDgxNTAyMTYxODEzNjkxMQ%3D%3D.2
-    latest_image_test.go:40: logged into Instagram as user 'apuntabienminombre'
+--- PASS: TestImportAccount (6.13s)
+    latest_image_test.go:139: URL is: https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/73287971_786782621780776_5746821102179489882_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=104&bc=1571337657&oh=3af3acad6bd6b04d0e1ec0ef53260dd5&oe=5E63B29C&ig_cache_key=MjE2Njc0NDk2Mzk4Mzg0Mjg4OQ%3D%3D.2
+    latest_image_test.go:141: logged into Instagram as user 'apuntabienminombre'
 PASS
-ok  	command-line-arguments	5.244s
+ok  	go-InstaCrawler/goinsta.v2/tests	6.144s
+
 ```
 
 La orden `make test` en el makefile es:
@@ -125,7 +170,7 @@ La orden `make test` en el makefile es:
         $(GOTEST) -v ./...
 
 Nuevamente requiere de las dependencias y después ejecuta los test en modo verbose `-v`.
-El modo verbose muestra tanto los posibles fallos como las lías de log que haya.
+El modo verbose muestra tanto los posibles fallos como las líneas de log que haya.
 
 ## Integración Continua 📦
 
