@@ -16,3 +16,4 @@ go:
 script:
 - make test
 - make run
+- make stop

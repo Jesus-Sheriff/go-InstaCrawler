@@ -18,8 +18,11 @@ clean:
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_UNIX)
 run: deps
-	$(GORUN) goinsta.v2/examples/show-latest-image/main.go
-	pmgo goinsta.v2/examples/show-latest-image/ app
+	#$(GORUN) goinsta.v2/examples/show-latest-image/main.go
+	pmgo start goinsta.v2/examples/show-latest-image/ app
+stop:
+	pmgo stop app
+	pmgo delete app
 deps:
 	$(GOGET) github.com/ahmdrz/goinsta
 	$(GOGET) github.com/gorilla/mux
