@@ -25,7 +25,7 @@ deps:
 	$(GOGET) github.com/gorilla/mux
 	$(GOGET) github.com/joho/godotenv
 	$(GOGET) github.com/struCoder/pmgo
-	mv /home/travis/go/bin/pmgo /usr/local/bin
+	# mv /home/travis/go/bin/pmgo /usr/local/bin
 variables:
 	. ./environment.sh
 
