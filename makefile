@@ -20,6 +20,8 @@ clean:
 run: deps
 	#$(GORUN) goinsta.v2/examples/show-latest-image/main.go
 	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
+runcircle:
+	pmgo start /home/circleci/project/github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
 stop:
 	pmgo stop app
 	pmgo delete app
