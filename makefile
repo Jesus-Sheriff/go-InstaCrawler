@@ -7,12 +7,6 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get -u -v
 BINARY_NAME=go-InstaCrawler
-BINARY_UNIX=$(BINARY_NAME)_unix
-# INSTAGRAM_USERNAME=_nombre_usuario_
-# INSTAGRAM_PASSWORD=_contraseña_usuario_
-GOPATH=$(HOME)/go
-#PATH=$(PATH):/usr/local/go/bin
-EXPORT=export
 
 all: test run
 build: 
@@ -25,15 +19,13 @@ clean:
 	rm -f $(BINARY_UNIX)
 run: deps
 	$(GORUN) goinsta.v2/examples/show-latest-image/main.go
+	pmgo goinsta.v2/examples/show-latest-image/ app
 deps:
 	$(GOGET) github.com/ahmdrz/goinsta
+	$(GOGET) github.com/gorilla/mux
+	$(GOGET) github.com/joho/godotenv
+	$(GOGET) github.com/struCoder/pmgo
+	mv /home/travis/go/bin/pmgo /usr/local/bin
 variables:
-	$(EXPORT) $(GOPATH)
-	$(EXPORT) $(PATH):/usr/local/go/bin 
-	echo "GOPATH: " $(GOPATH) 
-	echo "PATH: " $(PATH)
-user:
-	$(EXPORT) $(INSTAGRAM_USERNAME)
-	$(EXPORT) $(INSTAGRAM_PASSWORD)
-	echo "Usuario actual: " $(INSTAGRAM_USERNAME)
+	. ./environment.sh
 

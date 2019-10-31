@@ -12,6 +12,9 @@
 #Como a veces trabajo con Mac, puede incluirse este archivo en el repositorio
 .DS_Store
 
+#Archivo personal de variables de entorno
+environment.sh
+
 # Test binary, built with `go test -c`
 *.test
 
