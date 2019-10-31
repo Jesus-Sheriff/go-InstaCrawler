@@ -5,7 +5,7 @@ GOBUILD=$(GOCMD) build
 GORUN=$(GOCMD) run
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
-GOGET=$(GOCMD) get -u -v
+GOGET=$(GOCMD) get -v
 BINARY_NAME=go-InstaCrawler
 
 all: test run
@@ -22,6 +22,7 @@ run: deps
 	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
 runcircle: deps
 	pmgo start ~/project/goinsta.v2/examples/show-latest-image/ app 
+	pwd
 	# _/home/circleci/project/goinsta.v2/examples/show-latest-image
 stop:
 	pmgo stop app
@@ -31,7 +32,6 @@ deps:
 	$(GOGET) github.com/gorilla/mux
 	$(GOGET) github.com/joho/godotenv
 	$(GOGET) github.com/struCoder/pmgo
-	# mv /home/travis/go/bin/pmgo /usr/local/bin
 variables:
 	. ./environment.sh
 
