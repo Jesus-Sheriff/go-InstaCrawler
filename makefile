@@ -21,8 +21,9 @@ run: deps
 	#$(GORUN) goinsta.v2/examples/show-latest-image/main.go
 	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
 runcircle: deps
-	pmgo start ~/project/goinsta.v2/examples/show-latest-image/ app 
 	pwd
+	pmgo start ~/project/goinsta.v2/examples/show-latest-image/ app 
+	
 	# _/home/circleci/project/goinsta.v2/examples/show-latest-image
 stop:
 	pmgo stop app
