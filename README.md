@@ -174,15 +174,15 @@ El modo verbose muestra tanto los posibles fallos como las líneas de log que ha
 
 ## Integración Continua 📦
 
-Los detalles de Integración Continua y su explicación para evaluación [aquí](CI.md)
+**Los detalles de Integración Continua y su explicación para evaluación [aquí](CI.md)**
 
 Actualmente están configurados y en funcionamiento:
 
-[Travis-CI](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler) para los tests.
+[Travis-CI](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler) para los tests y ejecución.
 
 En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) ) están las distintas versiones usadas para testeo de la aplicación y su justificación.
 
-[Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) para test y ejecución en la versión 1.13.1 de Go.
+[Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) para test y ejecución en la versión 1.13.1 de Go (la ejecución falla, se exlica [aquí](CI.md)).
 
 [Shippable](https://app.shippable.com/github/Jesus-Sheriff/go-InstaCrawler/dashboard) para tests.
 
