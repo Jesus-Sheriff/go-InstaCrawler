@@ -6,7 +6,7 @@ GORUN=$(GOCMD) run
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get -v
-PMGOROUTE=find . -name "show-latest-image"
+PMGOROUTE=$(shell find . -name "show-latest-image")
 BINARY_NAME=go-InstaCrawler
 
 all: test run
