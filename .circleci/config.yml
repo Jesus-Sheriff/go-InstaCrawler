@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: make runcircle
+      - run: make stop
   test:
     docker:
       - image: circleci/golang:1.13.1
