@@ -18,11 +18,14 @@ clean:
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_UNIX)
 run: deps
-	#$(GORUN) goinsta.v2/examples/show-latest-image/main.go
+	$(GORUN) goinsta.v2/examples/show-latest-image/main.go
+run-pmgo: deps
+	pmgo start goinsta.v2/examples/show-latest-image/ app
+run-travis: deps
 	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
 runcircle: deps
 	pwd
-	pmgo start goinsta.v2/examples/show-latest-image/ app 
+	pmgo start ~/project/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
 	
 	# _/home/circleci/project/goinsta.v2/examples/show-latest-image
 stop:

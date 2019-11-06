@@ -15,5 +15,5 @@ go:
 #./... ejecuta todos los tests del directorio de test. Es útil por si se meten más archivos de tests en el futuro
 script:
 - make test
-- make run
+- make run-travis
 - make stop
