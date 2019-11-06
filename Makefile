@@ -25,7 +25,6 @@ run-travis: deps
 	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
 runcircle: deps
 	pwd
-	$(GORUN) goinsta.v2/examples/show-latest-image/main.go
 	pmgo start ~/project/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
 	pmgo start go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
 	pmgo stop app
