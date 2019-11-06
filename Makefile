@@ -32,6 +32,8 @@ runcircle: deps
 stop:
 	pmgo stop app
 	pmgo delete app
+heroku:
+	pmgo start $(PMGOROUTE) app
 deps:
 	$(GOGET) github.com/ahmdrz/goinsta
 	$(GOGET) github.com/gorilla/mux
