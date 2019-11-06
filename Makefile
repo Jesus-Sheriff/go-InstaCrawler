@@ -26,9 +26,9 @@ run-travis: deps
 runcircle: deps
 	pwd
 	# pmgo start ~/project/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
-	pmgo start go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
-	pmgo stop app
-	pmgo delete app
+	# pmgo start go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
+	# pmgo stop app
+	# pmgo delete app
 	cd ~/project/go-InstaCrawler/
 	pmgo start goinsta.v2/examples/show-latest-image/ app
 	pmgo stop app
