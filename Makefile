@@ -6,6 +6,7 @@ GORUN=$(GOCMD) run
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get -v
+PMGOROUTE=find . -name "show-latest-image"
 BINARY_NAME=go-InstaCrawler
 
 all: test run
@@ -25,18 +26,8 @@ run-travis: deps
 	pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
 runcircle: deps
 	pwd
-	# pmgo start ~/project/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
-	# pmgo start go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app 
-	# pmgo stop app
-	# pmgo delete app
-	cd ~/project/go-InstaCrawler/
-	pmgo start goinsta.v2/examples/show-latest-image/ app
-	pmgo stop app
-	pmgo delete app
-	cd ~
-	pmgo start ~/project/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
-	pmgo stop app
-	pmgo delete app
+	
+	pmgo start $(PMGOROUTE) app
 	# _/home/circleci/project/goinsta.v2/examples/show-latest-image
 stop:
 	pmgo stop app
