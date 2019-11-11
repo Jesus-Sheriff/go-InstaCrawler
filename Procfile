@@ -1,1 +1,1 @@
-web: make heroku
+web: go build -o bin/go-InstaCrawler -v; make heroku

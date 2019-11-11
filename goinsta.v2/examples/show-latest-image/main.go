@@ -68,11 +68,11 @@ func main() {
 	// Función para capturar los errores 404
 	router.NotFoundHandler = http.HandlerFunc(notFound)
 	//Gestíon de las variables de entorno (puerto)
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	port, exists := os.LookupEnv("MYPORT")
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
+	// port, exists := os.LookupEnv("MYPORT")
 	
 	if exists == false {
 		log.Println("Error al leer puerto. ¿Está definido? ")
@@ -98,5 +98,5 @@ func main() {
 	//log.Printf("ultima foto: ", feedTag.Images[0].User.Username)
 	log.Printf("ultima foto:  %s", imagenStatus[len(imagenStatus)-1].URI)
 
-	http.ListenAndServe(":"+port, router)
+	http.ListenAndServe(":"+os.Getenv("PORT"), router)
 }
