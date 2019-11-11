@@ -10,7 +10,7 @@ import (
 
 	//"github.com/ahmdrz/goinsta"
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 )
 
 type Imagen struct {
@@ -74,10 +74,10 @@ func main() {
 	// }
 	// port, exists := os.LookupEnv("MYPORT")
 	
-	if exists == false {
-		log.Println("Error al leer puerto. ¿Está definido? ")
-		return
-	}
+	// if exists == false {
+	// 	log.Println("Error al leer puerto. ¿Está definido? ")
+	// 	return
+	// }
 	// insta := goinsta.New(
 	// 	os.Getenv("INSTAGRAM_USERNAME"),
 	// 	os.Getenv("INSTAGRAM_PASSWORD"),
