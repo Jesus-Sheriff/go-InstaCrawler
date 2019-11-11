@@ -33,7 +33,7 @@ runcircle: deps
 stop:
 	pmgo stop app
 	pmgo delete app
-heroku: build
+heroku: 
 	./bin/go-InstaCrawler
 deps:
 	$(GOGET) gopkg.in/ahmdrz/goinsta.v2
