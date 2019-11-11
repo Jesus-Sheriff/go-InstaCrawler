@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"io"
 	"net/http/httptest"
-	"github.com/ahmdrz/goinsta"
+	"gopkg.in/ahmdrz/goinsta.v2"
 	
 )
 func getStatusHandler(w http.ResponseWriter, r *http.Request) {
