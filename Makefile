@@ -34,7 +34,7 @@ stop:
 	pmgo stop app
 	pmgo delete app
 heroku: 
-	./bin/go-InstaCrawler
+	./bin/show-latest-image
 deps:
 	$(GOGET) gopkg.in/ahmdrz/goinsta.v2
 	$(GOGET) github.com/gorilla/mux
