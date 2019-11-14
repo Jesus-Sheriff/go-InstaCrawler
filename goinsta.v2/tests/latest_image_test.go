@@ -143,4 +143,4 @@ func TestNotFound(t *testing.T){
 // 	t.Logf("URL is: %s", bestImageURL)
 
 // 	t.Logf("logged into Instagram as user '%s'", insta.Account.Username)
-}
+// }
