@@ -1,13 +1,13 @@
 package tests
 
 import (
-	"os"
+	// "os"
 	"testing"
-	"net/url"
+	// "net/url"
 	"net/http"
 	"io"
 	"net/http/httptest"
-	"gopkg.in/ahmdrz/goinsta.v2"
+	// "gopkg.in/ahmdrz/goinsta.v2"
 	
 )
 func getStatusHandler(w http.ResponseWriter, r *http.Request) {
