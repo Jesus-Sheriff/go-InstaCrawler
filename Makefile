@@ -12,7 +12,7 @@ BINARY_NAME=go-InstaCrawler
 all: test run
 build: 
 	$(GOBUILD) -o bin/$(BINARY_NAME) -v
-test: 
+test: deps
 	$(GOTEST) -v ./...
 clean: 
 	$(GOCLEAN)
