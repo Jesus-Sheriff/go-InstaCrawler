@@ -12,8 +12,8 @@ go:
 
 #Se añaden cadenas de texto cifradas con las variables de entorno para poder iniciar sesion en Instagram
 env:
-- secure: XyUZf5yMxvoRjs8gdBMzXV3GM3anMIylfpTVsLhtlGuOVGznYmtu1ZIcXFAkP4uikoLF6eyvG83SSakbKkwA5kNAaYXL3DogjP8H4kwJ0HF5TiAke/xZJWAn9MKYYXw0PYgRIgGqBX2/eHf1pfrr1IR6cSTdByVZmOjXmFYpgsdG93yOGHBJoe3CXJ8RjRaqyVI1Bp8g0qWUuIKvTRCsIMFdYvqgqKylJozU2kP/xdmYPC2sFmC6ViATXMEVsjcwT9VA5VjWfB5GPXWsBznY9zMxYXMsb4REMsK2wyeTOgyl2UILGPtFEoBJrsUX78z4BOl9eQYm81TaxsgNV4iuzA==
-- GO111MODULE=off
+- secure: 
+QTaLjfTalUPZosP9yDnViwmksxBVZMrpA8tAvO+EFIGxK5MhCzknzbb0rzIVrdPEDF44T/qsFlq0ZL16DPQxI0hPzBNf7Se6PqUm1J020mCArfB1bTa00raYeQhOE457V9Tl7eqjzZf1IC58JIBw1rNvkVrIM3T7hVuEQp7/Jx9m1zy5+dSiItcFokzdk+In49lxl588lFoGKC1ZU2awFE07GOaNI+aPEVUnKwhYXljSwGXBNPmOKRq9tYVR/3sq4Y+6959MSDL1EvR6Sx/4tmme9kL0PlUe/LvGGRbZL1RWqpfuA9bk/B+Ps3W/S4EYJkpfus3PeS5SgcBCpNvR7g==
 #Ejecución del test
 #./... ejecuta todos los tests del directorio de test. Es útil por si se meten más archivos de tests en el futuro
 script:
