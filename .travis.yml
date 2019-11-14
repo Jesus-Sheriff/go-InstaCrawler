@@ -10,7 +10,8 @@ go:
 - "1.12.x" 
 - "1.13.x"
 - master
-
+env:
+- GO111MODULE=off
 #Ejecución del test
 #./... ejecuta todos los tests del directorio de test. Es útil por si se meten más archivos de tests en el futuro
 script:
