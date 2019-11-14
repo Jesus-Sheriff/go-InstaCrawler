@@ -36,7 +36,7 @@ stop:
 heroku: 
 	./bin/show-latest-image
 deps:
-	$(GOGET) gopkg.in/ahmdrz/goinsta.v2
+	# $(GOGET) gopkg.in/ahmdrz/goinsta.v2
 	$(GOGET) github.com/gorilla/mux
 	$(GOGET) github.com/joho/godotenv
 	$(GOGET) github.com/struCoder/pmgo

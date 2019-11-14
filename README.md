@@ -22,6 +22,7 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
     - [Construido con 🛠️](#construido-con-🛠️)    
     - [Licencia 📄](#licencia-📄)    
     - [Gracias a... 🎁](#gracias-a-🎁)
+    - [Enlaces de interés y guías de ayuda](#Enlaces-de-interés-y-guías-de-ayuda)
 <!-- /TOC -->
 
 ### Pre-requisitos 📋
@@ -191,10 +192,24 @@ En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jes
 
 * [gvm](https://github.com/moovweb/gvm) - Manejador de versiones de GO
 * [make](https://es.wikipedia.org/wiki/Make) - Para la gestión de dependencias, variables de entorno, ejecución de test y compilación y ejecución.
+* [godep](https://github.com/tools/godep) - Manejador de dependencias. (Necesario para tener archivo go.mod para Heroku)
 
 buildtool: Makefile
 
 El archivo de makefile actualmente funciona correctamente para los tests, ejecución y resolución de dependencias. Se está añadiendo una forma de poder definir las variables de entorno desde aquí.
+
+## Enlaces de interés y guías de ayuda 
+
+[godep](https://github.com/tools/godep) - Documentación de godep
+
+[go modules](https://github.com/golang/go/wiki/Modules#quick-start) - Aquí explica la documentación oficial del blog de Go cómo crear un archivo `go.mod` de dependencias.
+
+[Heroku con Go](https://devcenter.heroku.com/articles/getting-started-with-go?singlepage=true) - Documentación de Heroku para empezar con tu proyecto de go.
+
+[Heroku con Go explicado de otra forma](https://medium.com/@freeformz/hello-world-with-go-heroku-38295332f07b) - Explica cómo crear el archivo Godeps de dependencias y cómo configurar el puerto (extreadamente útil).
+
+[Error de Heroku: `(Web process failed to bind to $PORT within 60 seconds of launch)`](https://stackoverflow.com/questions/15693192/heroku-node-js-error-web-process-failed-to-bind-to-port-within-60-seconds-of) - Pregunta de StackOverflow con la que entendí por qué me daba ese fallo Heroku.
+
 
 ## Licencia 📄
 

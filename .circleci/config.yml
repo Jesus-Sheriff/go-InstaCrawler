@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.13.1
+        environment: 
+          GO111MODULE: "off"
     steps:
       - checkout
       - run: make runcircle
@@ -10,6 +12,8 @@ jobs:
   test:
     docker:
       - image: circleci/golang:1.13.1
+        environment: 
+          GO111MODULE: "off"
     steps:
       - checkout
       - run: make test
