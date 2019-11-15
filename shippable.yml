@@ -11,6 +11,8 @@ go:
 - "1.13.1"
 
 #Se añaden cadenas de texto cifradas con las variables de entorno para poder iniciar sesion en Instagram
+# También se añade la variable para indicar que no se use el archivo go.mod en la versión 1.13.1
+# (Se incrusta en secure porque de lo contrario se creaban trabajos dobles en Shippable)
 env:
 - secure: QTaLjfTalUPZosP9yDnViwmksxBVZMrpA8tAvO+EFIGxK5MhCzknzbb0rzIVrdPEDF44T/qsFlq0ZL16DPQxI0hPzBNf7Se6PqUm1J020mCArfB1bTa00raYeQhOE457V9Tl7eqjzZf1IC58JIBw1rNvkVrIM3T7hVuEQp7/Jx9m1zy5+dSiItcFokzdk+In49lxl588lFoGKC1ZU2awFE07GOaNI+aPEVUnKwhYXljSwGXBNPmOKRq9tYVR/3sq4Y+6959MSDL1EvR6Sx/4tmme9kL0PlUe/LvGGRbZL1RWqpfuA9bk/B+Ps3W/S4EYJkpfus3PeS5SgcBCpNvR7g==
 #Ejecución del test
