@@ -19,7 +19,8 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
     - [Instalación 🔧](#instalación-🔧)    
     - [Ejecutando las pruebas (tests) ⚙️](#ejecutando-las-pruebas-tests-⚙️)    
     - [Integración Continua 📦](#integración-continua-📦)    
-    - [Construido con 🛠️](#construido-con-🛠️)    
+    - [Construido con 🛠️](#construido-con-🛠️)   
+    - [Deployment 📦](#Deployment-📦)
     - [Licencia 📄](#licencia-📄)    
     - [Gracias a... 🎁](#gracias-a-🎁)
     - [Enlaces de interés y guías de ayuda](#Enlaces-de-interés-y-guías-de-ayuda)
@@ -28,21 +29,27 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
 ### Pre-requisitos 📋
 
 
-Se recomienda instalar en primer lugar un gestor de versiones como [gvm](https://github.com/moovweb/gvm) para poder probar el mismo programa en diferentes versiones del lenguaje.
+Se recomienda instalar en primer lugar un gestor de versiones como [g](https://github.com/stefanmaric/g) para poder probar el mismo programa en diferentes versiones del lenguaje.
 
 ```
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+curl -sSL https://git.io/g-install | sh -s
 ```
-Nos situamos en nuestra carpeta de trabajo y procedemos a instalar la versión que queramos de go.
+
+Nos situamos en nuestra carpeta de trabajo y procedemos a instalar la versión que queramos de go. Podemos instalar la última versión así:
 
 ```
-gvm install go1.13.1
-gvm use go1.13.1
+g install latest
+g run latest
 ```
+O consultar las versiones disponibles así:
+```
+g list-all
+```
+
 
 Nota sobre versiones:
 
-* go actualmente tiene la versión estable 1.13.1 y da soporte hasta a dos versiones "major" anteriores (1.11 en este caso)
+* go actualmente tiene la versión estable 1.13.4 (released 2019/10/31) y da soporte hasta a dos versiones "major" anteriores (1.11 en este caso)
 * Más información en los comentarios del archivo [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) y en la [información de versiones](https://golang.org/doc/devel/release.html) oficial de go.
 
 ### Instalación y uso 🔧
@@ -90,18 +97,16 @@ Por defecto al hacer `make` ejecuta la orden del makefile `all: test run` que, d
 * Ejecución solo del servicio
 
 ```
+make deps
 make run
 ```
-
+`make deps` descarga dependencias.
 La orden `make run` en el makefile es esta:
 
-    run: deps
-	    pmgo start github.com/Jesus-Sheriff/go-InstaCrawler/goinsta.v2/examples/show-latest-image/ app
+    go run goinsta.v2/examples/show-latest-image/main.go
 
 
-Primero comprueba dependencias (`deps`) y después compila el código y ejecuta.
-
-Esta orden obtiene las dependencias (las actualiza si es necesario) y ejecuta el programa.
+Compila el código y ejecuta.
 
 Por defecto al ejecutarlo, muestra la última imagen con el hashtag #golang.
 
@@ -183,7 +188,7 @@ Actualmente están configurados y en funcionamiento:
 
 En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jesus-Sheriff/go-InstaCrawler/blob/master/.travis.yml) ) están las distintas versiones usadas para testeo de la aplicación y su justificación.
 
-[Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) para test y ejecución en la versión 1.13.1 de Go (la ejecución falla, se exlica [aquí](CI.md)).
+[Circle-CI](https://circleci.com/gh/Jesus-Sheriff/go-InstaCrawler) para test y ejecución en la versión 1.13.1 de Go.
 
 [Shippable](https://app.shippable.com/github/Jesus-Sheriff/go-InstaCrawler/dashboard) para tests.
 
@@ -193,10 +198,27 @@ En el archivo de configuración de Travis ( [.travis.yml](https://github.com/Jes
 * [gvm](https://github.com/moovweb/gvm) - Manejador de versiones de GO
 * [make](https://es.wikipedia.org/wiki/Make) - Para la gestión de dependencias, variables de entorno, ejecución de test y compilación y ejecución.
 * [godep](https://github.com/tools/godep) - Manejador de dependencias. (Necesario para tener archivo go.mod para Heroku)
+* [g](https://github.com/stefanmaric/g) - Como leemos en su documentación: "Simple go version manager, gluten-free."
 
 buildtool: Makefile
 
-El archivo de makefile actualmente funciona correctamente para los tests, ejecución y resolución de dependencias. Se está añadiendo una forma de poder definir las variables de entorno desde aquí.
+El archivo de Makefile actualmente funciona correctamente para los tests, ejecución y resolución de dependencias. 
+
+## Deployment 📦
+
+Despliegue: https://goinstacrawler.herokuapp.com/
+
+El despliegue se ha hecho en Heroku y se está trabajando en hacerlo en Google Cloud también.
+
+Como se ha indicado en la sección "Uso del microservicio" tenemos las siguientes llamadas disponibles a la API:
+* `/status`
+    
+* `/latest`
+
+* `/latest/{id}`
+
+[Más información sobre el despliegue para su corrección aquí.](docs/despliegue.md)
+
 
 ## Enlaces de interés y guías de ayuda 
 
@@ -210,6 +232,9 @@ El archivo de makefile actualmente funciona correctamente para los tests, ejecuc
 
 [Error de Heroku: `(Web process failed to bind to $PORT within 60 seconds of launch)`](https://stackoverflow.com/questions/15693192/heroku-node-js-error-web-process-failed-to-bind-to-port-within-60-seconds-of) - Pregunta de StackOverflow con la que entendí por qué me daba ese fallo Heroku.
 
+[Deploy an app in Google Cloud - Documentación oficial](https://cloud.google.com/appengine/docs/standard/go113/testing-and-deploying-your-app)
+
+[Deploy an app in Google Cloud - Medium](https://medium.com/google-cloud/deploying-your-go-app-on-google-app-engine-5f4a5c2a837)
 
 ## Licencia 📄
 

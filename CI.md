@@ -3,6 +3,7 @@ Información preliminar relativa a Go
 
 Go actualmente tiene la versión estable 1.13.1 y da soporte hasta a dos versiones "major" anteriores (1.11 en este caso). 
 
+Debido a incompatibilidades con el archivo `go.mod` necesario para Heroku y "opcional" en estos sitios de Integración Continua, se ha decidido deshabilitar con la opción `GO111MODULE=off`.
 
 Travis CI
     [![Build Status](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler.svg?branch=master)](https://travis-ci.com/Jesus-Sheriff/go-InstaCrawler)
@@ -59,7 +60,7 @@ CircleCI
     [![Dificultad](https://img.shields.io/badge/Dificultad-9%2F10-red)]()
 =============================================
 
-(Los tests funcionan, la ejecución falla porque la ruta que se pasa a `pmgo` no es correcta)
+(test+run)
 
 CircleCI es un poco distinto de configurar. Su archivo de configuración es muy distinto al de Travis y Shippable. Se basa en YAML y un simple espacio puede hacer que no funcione su lectura (y fallen todos los test).
 
@@ -88,6 +89,5 @@ Fichero de configuración:
 
 Como se ve, lo he configurado para que ejecute dos workflows. Se ejecutan los tests en la versión 1.13.1 y además lo construye y ejecuta haciendo uso de las órdenes de makefile.
 
-Como ya he dicho, actualmente la ejecución falla porque la ruta que se le pasa al gestor de procesos no es correcta.
 
 Las variables de entorno se definen en la web al igual que en Travis.
