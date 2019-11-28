@@ -12,7 +12,8 @@ RUN apk update && apk add --no-cache git
 WORKDIR $GOPATH/src/pruebadocker/
 COPY . .
 
-# Fetch dependencies.# Using go get.
+# Fetch dependencies.
+# Using go get.
 # go mod sería posible pero no me ha salido fácil en las pruebas, vuelvo a go get
 RUN go get -v github.com/gorilla/mux
 
@@ -20,7 +21,8 @@ RUN go get -v github.com/gorilla/mux
 # RUN go build -o /go/bin/main goinsta.v2/examples/show-latest-image/main.go 
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o /go/bin/main goinsta.v2/examples/show-latest-image/main.go
 # COPY /main /go/bin/main
-  RUN ls -la /go/bin 
+#Se comprueba que el binario está donde debería estar
+RUN ls -la /go/bin 
 
 ############################
 # STEP 2 build a small image
@@ -39,6 +41,6 @@ ENTRYPOINT ["/go/bin/prueba", "--port", "5000"]
 # Esta pregunta de stackoverflow solucionó mis problemas: https://stackoverflow.com/questions/56832363/docker-standard-init-linux-go211-exec-user-process-caused-no-such-file-or-di
 # Resulta que el binario que estaba creando no era de linkeo estático y por eso me daba este error:
 # standard_init_linux.go:211: exec user process caused "no such file or directory"
-
+# flags de compilación: https://stackoverflow.com/questions/22267189/what-does-the-w-flag-mean-when-passed-in-via-the-ldflags-option-to-the-go-comman
 
 

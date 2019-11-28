@@ -21,6 +21,7 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
     - [Integración Continua 📦](#integración-continua-📦)    
     - [Construido con 🛠️](#construido-con-🛠️)   
     - [Deployment 📦](#Deployment-📦)
+    - [Contenedor del microservicio 🐳](#contenedor)
     - [Licencia 📄](#licencia-📄)    
     - [Gracias a... 🎁](#gracias-a-🎁)
     - [Enlaces de interés y guías de ayuda](#Enlaces-de-interés-y-guías-de-ayuda)
@@ -219,6 +220,28 @@ Como se ha indicado en la sección "Uso del microservicio" tenemos las siguiente
 
 [Más información sobre el despliegue para su corrección aquí.](docs/despliegue.md)
 
+## Contenedor del microservicio 🐳
+
+Contenedor: https://goinstacrawler.herokuapp.com/
+
+-----------------
+Detalles adicionales para corrección, documentación extendida y decisiones de diseño en este enlace: [docs/contenedorDocker.md](docs/contenedorDocker.md)
+
+------------------
+
+Se ha hecho el despliegue del contenedor Docker en Heroku.
+
+El contenedor sincronizado con los cambios de este repositorio está en Docker Hub y puedes hacerle pull a tu local aquí: [jesussheriff/goinstacrawler](https://hub.docker.com/r/jesussheriff/goinstacrawler)
+
+Una vez que lo tienes en tu máquina local, ejecuta los siguientes comandos.
+
+```
+docker build  -t my-golang-app .
+docker run -p 5000:5000 my-golang-app
+```
+
+El microservicio estará accesible desde tu navegador en http://localhost:5000/
+
 
 ## Enlaces de interés y guías de ayuda 
 
@@ -235,6 +258,16 @@ Como se ha indicado en la sección "Uso del microservicio" tenemos las siguiente
 [Deploy an app in Google Cloud - Documentación oficial](https://cloud.google.com/appengine/docs/standard/go113/testing-and-deploying-your-app)
 
 [Deploy an app in Google Cloud - Medium](https://medium.com/google-cloud/deploying-your-go-app-on-google-app-engine-5f4a5c2a837)
+
+[Exponer puerto para contenedor en local](https://forums.docker.com/t/how-to-expose-port-on-running-container/3252/6)
+
+[Crear imágenes light de go para Docker y compilar el ejecutable sin linkeo dinámico](https://medium.com/@chemidy/create-the-smallest-and-secured-golang-docker-image-based-on-scratch-4752223b7324)
+
+[Esta pregunta de stackoverflow solucionó mis problemas de linkeo estático.](https://stackoverflow.com/questions/56832363/docker-standard-init-linux-go211-exec-user-process-caused-no-such-file-or-di) 
+Error: standard_init_linux.go:211: exec user process caused "no such file or directory"
+
+[Flags de compilación](https://stackoverflow.com/questions/22267189/what-does-the-w-flag-mean-when-passed-in-via-the-ldflags-option-to-the-go-comman)
+
 
 ## Licencia 📄
 
