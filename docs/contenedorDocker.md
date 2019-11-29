@@ -10,13 +10,25 @@ El proceso ha sido adaptar el microservicio que funcionaba como aplicación en l
 
 Se ha construido (build) la aplicación y el contenedor resultante ocupa en la actualidad unos 6MB gracias a las capacidades que tiene GO para generar ejecutables estáticos.
 
+## Docker Hub 🆙☁️
+
+El contenedor en Docker Hub se ha subido por la interfaz web para hacer la sincronización con GitHub directamente. No tiene complicación: darle un nombre sin caracteres especiales, configurar la rama de GitHub con la que se va a contruir la imagen y darle a "Create and Build".
+
+ Se podría haber subido a través del CLI con estas órdenes de a continuación, pero habría que haber ido a la interfaz web de todas formas para configurar la integración con los push de GitHub.
+
+    docker tag local-image:tagname new-repo:tagname
+    docker push new-repo:tagname
+
 ## Contenedor desplegado 📦👌
 
 Desplegado en https://goinstacrawler.herokuapp.com/
 
-Voy a intentar subirlo a Google Cloud (u otra nube) ya que en la práctica anterior no pude hacerlo.
+Como alternativa, también está en Azure: https://goinstacrawler.azurewebsites.net/
+
 
 ## Descripción de los pasos necesarios 🔜
+
+### Heroku
 
 Primero descargamos la imagen Docker:
 
@@ -35,6 +47,21 @@ Le decimos a Heroku finalmente que lo active:
     heroku container:release --app goinstacrawler  web
 
 Todos estos pasos podrían incluirse en un script que queda como opción para mejora.
+
+### Azure
+
+Para hacer el despliegue en Azure, se debe hacer desde la interfaz web.
+No obstante, al finalizar los pasos vía web, permite descargar una plantilla para que las próximas veces se pueda hacer el despliegue automáticamente con ella.
+
+Aquí se muestra la configuración principal de Azure.
+
+![Captura de pantalla Azure con Docker](azure.jpg)
+
+No tiene mucha complicación, solo seguir los pasos y ver las opciones que te muestra.
+
+Hay que seleccionar que nuestra imagen la queremos desde Docker Hub, el tipo de suscripción que en mi caso es Dreamspark, ponerle un nombre, seleccionar región y poco más.
+
+Sinceramente para probar algún Docker de forma rápida en la web, esta sería mi primera opción.
 
 ## Dockerfile 📄
 

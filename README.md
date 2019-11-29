@@ -224,12 +224,14 @@ Como se ha indicado en la sección "Uso del microservicio" tenemos las siguiente
 
 Contenedor: https://goinstacrawler.herokuapp.com/
 
+Contenedor alternativo: https://goinstacrawler.azurewebsites.net/
+
 -----------------
 Detalles adicionales para corrección, documentación extendida y decisiones de diseño en este enlace: [docs/contenedorDocker.md](docs/contenedorDocker.md)
 
 ------------------
 
-Se ha hecho el despliegue del contenedor Docker en Heroku.
+Se ha hecho el despliegue del contenedor Docker en Heroku y en Azure.
 
 El contenedor sincronizado con los cambios de este repositorio está en Docker Hub y puedes hacerle pull a tu local aquí: [jesussheriff/goinstacrawler](https://hub.docker.com/r/jesussheriff/goinstacrawler)
 
