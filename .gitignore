@@ -29,4 +29,6 @@ environment.sh
 /Godeps/
 /bin/
 
+/.vagrant/
+
 # End of https://www.gitignore.io/api/go

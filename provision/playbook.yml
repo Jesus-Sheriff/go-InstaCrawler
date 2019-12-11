@@ -1,0 +1,40 @@
+---
+    - hosts: all
+      become: true
+    
+      tasks:
+   
+      # - name: apt update
+      #   apt: update_cache=yes  upgrade=yes  
+      - name: Go 1.31.1
+        command: curl -O https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
+      - name: unzip go
+        command: tar -xvf go1.13.1.linux-amd64.tar.gz
+      - name: move go lib
+        # command: mv go /usr/local/
+        copy: remote_src=True src=go dest=/usr/local
+      - name: delete downloaded source file
+        command: rm  go1.13.1.linux-amd64.tar.gz
+      - name: delete extracted go folder
+        command: rm -R  go
+      # - name: create bash_profile
+      #   command: touch /home/vagrant/.bash_profile
+      # - name: export PATH
+      #   command: echo "export PATH=$PATH:/usr/local/go/bin" >> /home/vagrant/.bash_profile
+      # - name: export GOPATH
+      #   command: echo `export GOPATH=/home/vagrant/workspace:$PATH` >> /home/vagrant/.bash_profile
+      - name: Install git # https://www.edureka.co/community/41267/install-git-using-ansible
+        apt:
+          name: git
+          state: present
+      - name: Repo clone
+        git:  repo=https://github.com/Jesus-Sheriff/go-InstaCrawler  force=yes dest=/home/vagrant/go-InstaCrawler
+      # Info: https://docs.ansible.com/ansible/latest/modules/git_module.html
+      - name: Symlink Go binary
+        file:
+          src: "/usr/local/go/bin/go"
+          dest: "/usr/local/bin/go"
+          state: link
+      # - name: environment
+      #   command: export GOPATH=/home/vagrant/workspace
+      #    https://stackoverflow.com/questions/24162996/how-to-move-rename-a-file-using-an-ansible-task-on-a-remote-system

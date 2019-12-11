@@ -35,6 +35,11 @@ stop:
 	pmgo delete app
 heroku: 
 	./bin/show-latest-image
+vm: vm-up vm-provision
+vm-up:
+	vagrant up
+vm-provision:
+	vagrant provision
 deps:
 	# $(GOGET) gopkg.in/ahmdrz/goinsta.v2
 	$(GOGET) github.com/gorilla/mux
