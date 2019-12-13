@@ -302,7 +302,7 @@ Error: standard_init_linux.go:211: exec user process caused "no such file or dir
 
 [Flags de compilación](https://stackoverflow.com/questions/22267189/what-does-the-w-flag-mean-when-passed-in-via-the-ldflags-option-to-the-go-comman)
 
-Para el hito 6:
+
 
 [Aquí empecé a ver cómo se provisionaba con Ansible](https://medium.com/@Joachim8675309/vagrant-provisioning-with-ansible-6dba6bca6290)
 
