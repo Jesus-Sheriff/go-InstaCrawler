@@ -247,7 +247,7 @@ El microservicio estará accesible desde tu navegador en http://localhost:5000/
 
 ## Provisionamiento 🇻🅰️
 
-Provision: provision/playbook.yml
+provision: provision/playbook.yml
 
 -----------------
 Detalles adicionales para corrección, documentación extendida y decisiones de diseño en este enlace: [docs/provisionamiento.md](docs/provisionamiento.md)
