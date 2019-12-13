@@ -22,6 +22,7 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
     - [Construido con 🛠️](#construido-con-🛠️)   
     - [Deployment 📦](#Deployment-📦)
     - [Contenedor del microservicio 🐳](#contenedor)
+    - [Provisionamiento 🇻🅰️](#provisionamiento)
     - [Licencia 📄](#licencia-📄)    
     - [Gracias a... 🎁](#gracias-a-🎁)
     - [Enlaces de interés y guías de ayuda](#Enlaces-de-interés-y-guías-de-ayuda)
@@ -244,6 +245,37 @@ docker run -p 5000:5000 my-golang-app
 
 El microservicio estará accesible desde tu navegador en http://localhost:5000/
 
+## Provisionamiento 🇻🅰️
+
+Provision: provision/playbook.yml
+
+-----------------
+Detalles adicionales para corrección, documentación extendida y decisiones de diseño en este enlace: [docs/provisionamiento.md](docs/provisionamiento.md)
+
+------------------
+
+El provisionamiento tiene dos fases: creación de la máquina virtual (con Vagrant 🇻) y provisionamiento de esta máquina con lo necesario (con Ansible 🅰️ en nuestro caso).
+
+Tienes dos formas de comprobar el funcionamiento en local:
+
+### 1. Si NO tienes este repositorio clonado localmente
+
+Para usar la máquina creada se ejecutan los siguientes comandos:
+
+    vagrant init jesus-sheriff/go-InstaCrawler --box-version 1.0
+    vagrant up
+
+El primero descarga la imagen (box) y el segundo la inicia.
+
+### 2. Si tienes este repositorio clonado localmente
+
+Solo necesitas hacer la siguiente orden que iniciará el proceso de provisionado completo (VM + Provisionado):
+
+    make vm
+
+Una vez hecha alguna de las opciones anteriores, puedes conectarte por ssh a la máquina:
+
+    vagrant ssh
 
 ## Enlaces de interés y guías de ayuda 
 
@@ -270,6 +302,21 @@ Error: standard_init_linux.go:211: exec user process caused "no such file or dir
 
 [Flags de compilación](https://stackoverflow.com/questions/22267189/what-does-the-w-flag-mean-when-passed-in-via-the-ldflags-option-to-the-go-comman)
 
+Para el hito 6:
+
+[Aquí empecé a ver cómo se provisionaba con Ansible](https://medium.com/@Joachim8675309/vagrant-provisioning-with-ansible-6dba6bca6290)
+
+[De aquí aprendí a coger las dependencias en Ansible (OJO! Tiene mucha información útil muy bien explicada)](https://www.adictosaltrabajo.com/2015/09/04/creacion-de-entornos-de-integracion-con-ansible-y-vagrant/)
+
+[De aquí vi cómo instalar Go, pero al ser un fichero de script (nosotros usamos Ansible) me daba problemas. En concreto con las órdenes export.](http://clouds.freeideas.cz/subdom/clouds/2017/08/02/ansible-install-golang-and-set-env-variables/)
+
+[Cómo clonar un repositorio en tu máquina virtual con Ansible](https://docs.ansible.com/ansible/latest/modules/git_module.html)
+
+[Instalar git en Ansible](https://www.edureka.co/community/41267/install-git-using-ansible)
+
+[Conexión ssh con Vagrant](https://www.hashbangcode.com/article/connecting-vagrant-box-without-vagrant-ssh-command)
+
+[Cómo copiar, mover o renombrar con ```mv``` en Ansible](https://stackoverflow.com/questions/24162996/how-to-move-rename-a-file-using-an-ansible-task-on-a-remote-system)
 
 ## Licencia 📄
 

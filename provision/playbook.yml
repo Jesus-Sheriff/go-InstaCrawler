@@ -4,8 +4,8 @@
     
       tasks:
    
-      # - name: apt update
-      #   apt: update_cache=yes  upgrade=yes  
+      - name: apt update
+        apt: update_cache=yes  upgrade=yes  
       - name: Go 1.31.1
         command: curl -O https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
       - name: unzip go

@@ -40,6 +40,8 @@ vm-up:
 	vagrant up
 vm-provision:
 	vagrant provision
+get-vm:
+	vagrant init jesus-sheriff/go-InstaCrawler --box-version 1.0
 deps:
 	# $(GOGET) gopkg.in/ahmdrz/goinsta.v2
 	$(GOGET) github.com/gorilla/mux
