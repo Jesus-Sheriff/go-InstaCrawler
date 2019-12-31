@@ -23,6 +23,7 @@ Para otra información puedes ver el [antiguo README](https://github.com/Jesus-S
     - [Deployment 📦](#Deployment-📦)
     - [Contenedor del microservicio 🐳](#contenedor)
     - [Provisionamiento 🇻🅰️](#provisionamiento)
+    - [Despliegue final](#desplieguefinal)
     - [Licencia 📄](#licencia-📄)    
     - [Gracias a... 🎁](#gracias-a-🎁)
     - [Enlaces de interés y guías de ayuda](#Enlaces-de-interés-y-guías-de-ayuda)
@@ -277,6 +278,12 @@ Una vez hecha alguna de las opciones anteriores, puedes conectarte por ssh a la 
 
     vagrant ssh
 
+## Despliegue final
+
+Despliegue final: 104.214.228.152:5000
+
+Documentación adicional para corrección en [docs/Iaas.md](docs/Iaas.md)
+
 ## Enlaces de interés y guías de ayuda 
 
 [godep](https://github.com/tools/godep) - Documentación de godep
@@ -317,6 +324,16 @@ Error: standard_init_linux.go:211: exec user process caused "no such file or dir
 [Conexión ssh con Vagrant](https://www.hashbangcode.com/article/connecting-vagrant-box-without-vagrant-ssh-command)
 
 [Cómo copiar, mover o renombrar con ```mv``` en Ansible](https://stackoverflow.com/questions/24162996/how-to-move-rename-a-file-using-an-ansible-task-on-a-remote-system)
+
+[CLI de Azure para Linux](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest) Cómo instalar el CLI de Azure.
+
+[Azure Github](https://github.com/Azure/vagrant-azure) Documentación oficial en el GitHub de Azure para configurar Vagrant. (Recomendado como primera lectura.)
+
+[Uso de Vagrant con Azure](https://blog.scottlowe.org/2017/12/11/using-vagrant-with-azure/) Esta guía está más o menos actualizada y me ha servido mucho.
+
+[Invocar make en Ansible](https://docs.ansible.com/ansible/latest/modules/make_module.htmlv) En la documentación oficial de Ansible explica bien cómo invocar una orden de Makefile desde el playbook.
+
+
 
 ## Licencia 📄
 

@@ -19,7 +19,7 @@ clean:
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_UNIX)
 run: 
-	$(GORUN) goinsta.v2/examples/show-latest-image/main.go
+	$(GORUN) goinsta.v2/examples/show-latest-image/main.go &
 run-pmgo: deps
 	$(shell mv $GOPATH/bin/pmgo /usr/local/bin)
 	pmgo start goinsta.v2/examples/show-latest-image/ app
