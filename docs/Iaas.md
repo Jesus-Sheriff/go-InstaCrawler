@@ -86,3 +86,26 @@ La parte de provisionamiento es igual que en el anterior hito:
         ansible.verbose = true
     end
 
+
+## Anécdota (VM con Vagrant vs Docker)
+
+    Nota mental: Queda pendiente usar un balanceador de carga y testearlo en Docker.
+
+Un dato que quería comentar es que como me gusta el tema de balanceo de carga en servidores, hice una prueba con Apache Benchmark entre una instancia Docker en local y una con Vagrant.
+
+Lo curioso es que Docker, cuya imagen ocupa apenas 6 megas, es algo más lenta que la máquina virtual creada con Vagrant.
+
+En un primer momento pensé que podía ser por diferencia de recursos que se le diesen a uno y otro por defecto pero, según consulté, los tienen "ilimitados" con el sistema operativo anfitrión.
+
+Quizás la clave esté en que escalar varias máquinas con Docker sea más rápido y, por tanto, más barato en sistemas en la nube donde se te cobra por uso. Aparte, la diferencia de tiempos en arrancar un nuevo contenedor Docker y una máquina completa de Vagrant y provisionar puede ser de 3 o 4 minutos fácilmente, con lo cual, en una situación de alta demanda puntual, estaríamos un poco vendidos. Por tanto el balanceo de carga queda suficientemente justificado y se ve que su uso no es "por gusto" aunque en un sistema estándar parezca que no haga falta.
+
+
+En las siguientes capturas vemos los tiempos y la información de Apache Benchmark.
+
+Apache benchmark sobre una máquina de Vagrant:
+
+![Apache benchmark con Vagrant](ab_vm2.png)
+
+Apache benchmark sobre un Docker:
+
+![Apache benchmark con docker](ab_docker.png)
